@@ -1,5 +1,6 @@
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
+import Sidebar from "./components/Sidebar";
 
 
 export default function Home() {
@@ -7,9 +8,9 @@ export default function Home() {
   // if (!session) {
     return (
       <>
-        
+
         <main className="flex items-center w-screen h-screen">
-         
+         <Sidebar />
         </main>
       </>
     );
