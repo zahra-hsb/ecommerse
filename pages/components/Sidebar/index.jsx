@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 
 const Sidebar = () => {
     const inactiveLinks = 'text-white bg-blue-900'
-    const activeLink = 'text-blue-900 bg-[#f9fafb] w-full p-3 hover:text-red-500 rounded-s-md'
+    const activeLink = 'text-blue-900 bg-[#f9fafb] w-full p-3 hover:text-red-500 rounded-md sm:rounded-s-md sm:rounded-none'
 
     const router = useRouter();
 
@@ -21,7 +21,7 @@ const Sidebar = () => {
 
     return (
         <>
-            <div className="flex flex-col items-start gap-10 bg-blue-900 w-1/5 h-screen p-10 text-white text-lg pr-0">
+            <div className="flex flex-col items-start gap-10 bg-blue-900 w-full sm:w-1/5 h-screen p-8 py-16 sm:p-10 text-white text-lg  sm:pr-0">
                 <h4 className="flex items-center gap-4 font-bold">
                 <BsShop />Ecommerse Admin</h4>
                 <ul className="flex flex-col gap-8 w-full">

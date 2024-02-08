@@ -10,7 +10,7 @@ export default function Layout({ children }) {
     return (
       <>
 
-        <main className="flex items-center w-screen h-screen">
+        <main className="flex flex-col sm:flex-row items-center w-screen h-screen">
          <Sidebar />
          {children}
 
