@@ -1,6 +1,7 @@
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Sidebar from "./components/Sidebar";
+import Dashboard from "./components/Dashboard";
 
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
 
         <main className="flex items-center w-screen h-screen">
          <Sidebar />
+         <Dashboard />
         </main>
       </>
     );
