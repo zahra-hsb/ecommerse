@@ -8,9 +8,7 @@ export default function Home() {
     return (
       <>
         <main className="flex items-center w-screen h-screen bg-blue-900">
-          <div className="text-center w-full">
-            <button onClick={() => signIn('google')} className="bg-white p-2 px-4 rounded-md">login with google</button>
-          </div>
+         
         </main>
       </>
     );
