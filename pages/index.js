@@ -1,6 +1,7 @@
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Layout from "./Layout";
+import Dashboard from "./components/Dashboard";
 
 
 
@@ -11,7 +12,9 @@ export default function Home() {
       <>
 
 
-         <Layout>test</Layout>
+         <Layout>
+          <Dashboard />
+         </Layout>
 
       </>
     );
