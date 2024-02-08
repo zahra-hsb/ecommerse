@@ -1,18 +1,20 @@
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
-import Layout from "./Layout";
+
+import Sidebar from "./components/Sidebar";
 
 
-
-export default function Home() {
+export default function Layout({ children }) {
   // const { data: session } = useSession();
   // if (!session) {
     return (
       <>
 
+        <main className="flex items-center w-screen h-screen">
+         <Sidebar />
+         {children}
 
-         <Layout>test</Layout>
-
+        </main>
       </>
     );
   // }

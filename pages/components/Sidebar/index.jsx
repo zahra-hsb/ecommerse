@@ -10,50 +10,52 @@ import { BsShop } from "react-icons/bs";
 
 
 const Sidebar = () => {
+    const inactiveLinks = 'text-white bg-blue-900'
+    const activeLink = 'text-blue-900 bg-[#f9fafb] w-full p-3 hover:text-red-500 rounded-s-md'
     return (
         <>
-            <div className="flex flex-col items-start gap-10 bg-blue-900 w-1/5 h-screen p-10 text-white text-lg">
+            <div className="flex flex-col items-start gap-10 bg-blue-900 w-1/5 h-screen p-10 text-white text-lg pr-0">
                 <h4 className="flex items-center gap-4 font-bold">
                 <BsShop />Ecommerse Admin</h4>
-                <ul className="flex flex-col gap-8">
+                <ul className="flex flex-col gap-8 w-full">
                     <li>
-                        <Link href={'/'} className="hover:text-gray-300 text-md flex items-center gap-3">
+                        <Link href={'/'} className={`${activeLink} hover:text-gray-300 text-md flex items-center gap-3`}>
                             <RxDashboard />
                             Dashboard
                         </Link>
                     </li>
                     <li>
-                        <Link href={'/'} className="hover:text-gray-300 text-md flex items-center gap-3">
+                        <Link href={'/products'} className={`${inactiveLinks} hover:text-gray-300 text-md flex items-center gap-3`}>
                             <VscArchive />
                             Products
                         </Link>
                     </li>
                     <li>
-                        <Link href={'/'} className="hover:text-gray-300 text-md flex items-center gap-3">
+                        <Link href={'/orders'} className={`${inactiveLinks} hover:text-gray-300 text-md flex items-center gap-3`}>
                             <GoNote />
                             Orders
                         </Link>
                     </li>
                     <li>
-                        <Link href={'/'} className="hover:text-gray-300 text-md flex items-center gap-3">
+                        <Link href={'/categories'} className={`${inactiveLinks} hover:text-gray-300 text-md flex items-center gap-3`}>
                             <RiListUnordered />
                             Categories
                         </Link>
                     </li>
                     <li>
-                        <Link href={'/'} className="hover:text-gray-300 text-md flex items-center gap-3">
+                        <Link href={'/admins'} className={`${inactiveLinks} hover:text-gray-300 text-md flex items-center gap-3`}>
                             <HiOutlineUserGroup />
                             Admins
                         </Link>
                     </li>
                     <li>
-                        <Link href={'/'} className="hover:text-gray-300 text-md flex items-center gap-3">
+                        <Link href={'/settings'} className={`${inactiveLinks} hover:text-gray-300 text-md flex items-center gap-3`}>
                         <IoSettingsOutline />
                             Settings
                         </Link>
                     </li>
                     <li>
-                        <Link href={'/'} className="hover:text-gray-300 text-md flex items-center gap-3">
+                        <Link href={'/'} className={`${inactiveLinks} hover:text-gray-300 text-md flex items-center gap-3`}>
                             <BiLogOut />
                             Logout
                         </Link>
