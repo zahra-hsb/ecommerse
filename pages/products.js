@@ -8,7 +8,7 @@ export default function Products() {
         <Layout>
             <div className="flex flex-col flex-start sm:p-20 py-10 px-5 w-screen h-screen gap-10 bg-gray-50">
                 <div>
-                    <button className="text-white bg-blue-900 hover:bg-blue-800 py-2 px-5 rounded-md">Add new product</button>
+                    <Link href={'/products/new'} className="text-white bg-blue-900 hover:bg-blue-800 py-2 px-5 rounded-md">Add new product</Link>
                 </div>
                 <div>
                     <div className="bg-white border p-4">
