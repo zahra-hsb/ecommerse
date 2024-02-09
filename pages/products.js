@@ -1,14 +1,15 @@
 import Layout from "@/pages/Layout.js";
 import axios from "axios";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 export default function Products() {
+    const [products, setProducts] = useState([])
     useEffect(() => {
         axios.get('/api/products').then(response => {
-            console.log(response.data)
+            setProducts(response.data)
         })
     }, [])
     return (
@@ -22,19 +23,24 @@ export default function Products() {
                         <p>PRODUCT NAME</p>
                     </div>
                     <ul className="bg-white drop-shadow-sm">
-                        <li className="flex items-center justify-between w-full p-3 px-5">
-                            <p>Iphone 14 Pro Black</p>
-                            <div className="flex flex-col sm:flex-row w-1/2 gap-5">
-                                <Link href={''} className="flex border p-1 px-3 items-center gap-2 active:bg-gray-50 hover:text-gray-700">
-                                    <FaEdit />
-                                    Edit
-                                </Link>
-                                <Link href={''} className="flex px-3 p-1 items-center text-red-600 active:bg-red-200 border border-red-500 gap-2">
-                                    <RiDeleteBin5Line />
-                                    Delete
-                                </Link>
-                            </div>
-                        </li>
+                        {products.map(item => (
+                            <>
+                                <li className="flex items-center justify-between w-full p-3 px-5">
+                                    <p>{item.title}</p>
+                                    <div className="flex flex-col sm:flex-row w-1/2 gap-5">
+                                        <Link href={''} className="flex border p-1 px-3 items-center gap-2 active:bg-gray-50 hover:text-gray-700">
+                                            <FaEdit />
+                                            Edit
+                                        </Link>
+                                        <Link href={''} className="flex px-3 p-1 items-center text-red-600 active:bg-red-200 border border-red-500 gap-2">
+                                            <RiDeleteBin5Line />
+                                            Delete
+                                        </Link>
+                                    </div>
+                                </li>
+                            </>
+
+                        ))}
                     </ul>
                 </div>
             </div>
