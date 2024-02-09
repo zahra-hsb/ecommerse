@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Layout from "../Layout";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import axios from "axios";
+import { redirect } from "next/navigation";
 
 export default function NewProducts() {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
+    const [goToProducts, setGoToProducts] = useState('')
     const router = useRouter()
 
 
@@ -14,6 +16,10 @@ export default function NewProducts() {
         e.preventDefault()
         const data = {title, description, price};
         await axios.post('/api/products', data);
+        setGoToProducts(true)
+    }
+    if(goToProducts) {
+        router.push('/products')
     }
     return (
         <Layout>
