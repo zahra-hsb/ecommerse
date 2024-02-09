@@ -32,7 +32,7 @@ export default function Products() {
                                             <FaEdit />
                                             Edit
                                         </Link>
-                                        <Link href={''} className="flex px-3 p-1 items-center text-red-600 active:bg-red-200 border border-red-500 gap-2">
+                                        <Link href={'/products/delete/'+item._id} className="flex px-3 p-1 items-center text-red-600 active:bg-red-200 border border-red-500 gap-2">
                                             <RiDeleteBin5Line />
                                             Delete
                                         </Link>
