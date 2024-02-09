@@ -1,6 +1,7 @@
 import { useRouter } from "next/router"
 import Layout from "../../Layout"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 const EditProductPage = () => {
     const [title, setTitle] = useState('')
@@ -8,11 +9,16 @@ const EditProductPage = () => {
     const [price, setPrice] = useState('')
     const [goToProducts, setGoToProducts] = useState('')
     const router = useRouter()
-
+    const {id} = router.query
+    useEffect(() => {
+        axios.get('/api/products?id='+id).then(response => {
+            console.log(response.data)
+        })
+    }, [id])
     return (
         <>
             <Layout>
-                <form onSubmit={''} className="w-full h-screen gap-5 p-5 flex flex-col items-start justify-start">
+                <form className="w-full h-screen gap-5 p-5 flex flex-col items-start justify-start">
                     <div>
                         <h3>new Product</h3>
                     </div>
