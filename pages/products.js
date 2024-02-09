@@ -1,9 +1,16 @@
 import Layout from "@/pages/Layout.js";
+import axios from "axios";
 import Link from "next/link";
+import { useEffect } from "react";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 export default function Products() {
+    useEffect(() => {
+        axios.get('/api/products').then(response => {
+            console.log(response.data)
+        })
+    }, [])
     return (
         <Layout>
             <div className="flex flex-col flex-start sm:p-20 py-10 px-5 w-screen h-screen gap-10 bg-gray-50">
