@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Layout from "../Layout";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function NewProducts() {
     const [title, setTitle] = useState('')
@@ -9,7 +10,8 @@ export default function NewProducts() {
     const router = useRouter()
 
 
-    async function createProduct() {
+    async function createProduct(e) {
+        e.preventDefault()
         const data = {title, description, price};
         await axios.post('/api/products', data);
     }
@@ -21,15 +23,15 @@ export default function NewProducts() {
                 </div>
                 <div className="w-full flex flex-col gap-2">
                     <label>Product name</label>
-                    <input type="text" placeholder="product name" value={title} onChange={e => setTitle(e.target.value)} />
+                    <input type="text" placeholder="product name" name="title" value={title} onChange={e => setTitle(e.target.value)} />
                 </div>
                 <div className="w-full flex flex-col gap-2">
                     <label>Description</label>
-                    <textarea placeholder="description" value={description} onChange={e => setDescription(e.target.value)}></textarea>
+                    <textarea placeholder="description" name="description" value={description} onChange={e => setDescription(e.target.value)}></textarea>
                 </div>
                 <div className="w-full flex flex-col gap-2">
                     <label>Price (in USA)</label>
-                    <input type="number" placeholder="price" value={price} onChange={e => setPrice(e.target.value)} />
+                    <input type="number" placeholder="price" name="price" value={price} onChange={e => setPrice(e.target.value)} />
                 </div>
                 <div className="flex gap-2">
                     <button type="submit" className="text-white bg-blue-900 hover:bg-blue-800 py-2 px-5 rounded-md active:bg-white active:border-2 active:border-blue-900 active:text-blue-900">Save</button>
