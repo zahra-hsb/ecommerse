@@ -28,7 +28,7 @@ export default function Products() {
                                 <li className="flex items-center justify-between w-full p-3 px-5">
                                     <Link href={'#'}>{item.title}</Link>
                                     <div className="flex flex-col sm:flex-row w-1/2 gap-5">
-                                        <Link href={'/products/edit'} className="flex border p-1 px-3 items-center gap-2 active:bg-gray-50 hover:text-gray-700">
+                                        <Link href={'/products/edit/'+item._id} className="flex border p-1 px-3 items-center gap-2 active:bg-gray-50 hover:text-gray-700">
                                             <FaEdit />
                                             Edit
                                         </Link>
