@@ -2,6 +2,7 @@ import { Router, useRouter } from "next/router";
 import axios from "axios";
 import { useState } from "react";
 import { FiUpload } from "react-icons/fi";
+import Image from "next/image";
 
 
 const ProductForm = ({
@@ -9,8 +10,9 @@ const ProductForm = ({
     title: existingTitle,
     description: existingDescription,
     price: existingPrice,
-    images,
+    images: existingImages,
 }) => {
+    const [images, setImages] = useState(existingImages || [])
     const [title, setTitle] = useState(existingTitle || '')
     const [description, setDescription] = useState(existingDescription || '')
     const [price, setPrice] = useState(existingPrice || '')
@@ -42,6 +44,9 @@ const ProductForm = ({
             }
             const res = await axios.post('/api/upload', data)
             // console.log(res)
+            setImages(oldImages => {
+                return [...oldImages, ...res.data.Links]
+            })
         }
     }
     return (
@@ -54,8 +59,15 @@ const ProductForm = ({
                 <label>Description</label>
                 <textarea placeholder="description" name="description" value={description} onChange={e => setDescription(e.target.value)}></textarea>
             </div>
-            <div>
-                <label className='w-24 h-24 flex items-center justify-center border-2 cursor-pointer hover:bg-gray-300'>
+            <div className="flex gap-5 overflow-x-scroll w-full">
+                {!!images?.length && images.map(link => (
+                    <>
+                        <div className="w-1/4" key={link}>
+                            <img src={`${link}`} alt='sa' width={150} height={150}/>
+                        </div>
+                    </>
+                ))}
+                <label className='w-[150px] h-[150px] flex items-center justify-center border-2 cursor-pointer hover:bg-gray-300'>
                     <FiUpload size={25} />
                     <input type="file" onChange={uploadImages} className="hidden" />
                 </label>

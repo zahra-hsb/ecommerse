@@ -55,7 +55,7 @@ export default async function handle(req, res) {
             console.log(error);
         }
         // const link = `https://${BucketName}.iran.liara.space/${newFileName}?X-Amz-Algorithm=${}&X-Amz-Credential=${}&X-Amz-Date=${}&X-Amz-Expires=${}&X-Amz-SignedHeaders=host&X-Amz-Signature=${}`;
-        const link = `https://${BucketName}.iran.liara.space/${newFileName}?X-Amz-Algorithm=`
+        const link = `https://${BucketName}.storage.iran.liara.space/${newFileName}`
         Links.push(link)
     }
 
