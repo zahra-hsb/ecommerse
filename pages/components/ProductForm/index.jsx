@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { FiUpload } from "react-icons/fi";
 
+
 const ProductForm = ({
     _id,
     title: existingTitle,
@@ -39,11 +40,8 @@ const ProductForm = ({
                 data.append('file', file)
                 
             }
-            const res = await fetch('/api/upload', {
-                method: 'POST',
-                body: data
-            })
-            console.log(res)
+            const res = await axios.post('/api/upload', data)
+            // console.log(res)
         }
     }
     return (
