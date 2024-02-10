@@ -9,7 +9,8 @@ export default async function handle(req, res) {
             resolve({fields, files})
         })
     })
-    console.log(files.length)
+    console.log('files: ', files.file.length)
+    
     return res.json('ok')
 }
 
