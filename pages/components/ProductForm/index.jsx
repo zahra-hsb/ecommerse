@@ -22,7 +22,7 @@ const ProductForm = ({
 
     async function saveProduct(e) {
         e.preventDefault()
-        const data = { title, description, price };
+        const data = { title, description, price, images };
 
         if (_id) {
             await axios.put('/api/products', { ...data, _id })
@@ -36,7 +36,7 @@ const ProductForm = ({
     }
     async function uploadImages(e) {
         const files = e.target?.files;
-        if(files.length > 0) {
+        if(files?.length > 0) {
             const data = new FormData();
             for(const file of files) {
                 data.append('file', file)
