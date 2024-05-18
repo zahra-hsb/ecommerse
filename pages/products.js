@@ -25,7 +25,7 @@ export default function Products() {
                     <ul className="bg-white drop-shadow-sm">
                         {products.map(item => (
                             <>
-                                <li className="flex items-center justify-between w-full p-3 px-5">
+                                <li key={products._id} className="flex items-center justify-between w-full p-3 px-5">
                                     <Link href={'#'}>{item.title}</Link>
                                     <div className="flex flex-col sm:flex-row w-1/2 gap-5">
                                         <Link href={'/products/edit/'+item._id} className="flex border p-1 px-3 items-center gap-2 active:bg-gray-50 hover:text-gray-700">

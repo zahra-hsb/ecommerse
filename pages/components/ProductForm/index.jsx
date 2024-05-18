@@ -66,8 +66,8 @@ const ProductForm = ({
                 <label>Description</label>
                 <textarea placeholder="description" name="description" value={description} onChange={e => setDescription(e.target.value)}></textarea>
             </div>
-            <div className="flex overflow-x-scroll w-full">
-                <ReactSortable list={images} className="flex gap-5 p-5" setList={uploadImagesOrder}>
+            <div className="flex w-full">
+                <ReactSortable list={images} className="flex flex-wrap gap-5 p-5" setList={uploadImagesOrder}>
                     {!!images?.length && images.map(link => (
                         <>
                             <div className="w-[150px] h-[180px] overflow-hidden rounded" key={link}>
