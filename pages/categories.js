@@ -14,10 +14,13 @@ const Categories = () => {
         e.preventDefault()
         await axios.post('/api/categories/', { name });
         setName('')
+        fetchCategories()
     }
-
-    useEffect(() => {
+    function fetchCategories() {
         axios.get('/api/categories').then(res => setCategory(res.data))
+    }
+    useEffect(() => {
+        fetchCategories()
     }, [])
     return (
         <>
@@ -29,14 +32,25 @@ const Categories = () => {
                     <label className="my-2">New category name</label>
                     <form onSubmit={(e) => saveCategory(e)} className="flex gap-1">
                         <input onChange={(e) => changeHandler(e)} value={name} type="text" placeholder="category name" />
+                        <select className="border-2 rounded-md px-1 cursor-pointer outline-none focus:bg-slate-50">
+                            <option>no parent category</option>
+                            {category.length > 0 && category.map(cat => (
+                                <>
+                                    <option value={cat._id}>{cat.name}</option>
+                                </>
+                            ))}
+                        </select>
                         <button type='submit' className="btn-primary" >Save</button>
                     </form>
-                    <ul>
-                        {category.map(cat => (
+                    <ul className="w-full">
+                        <li className="w-full bg-blue-800 text-white p-3 mt-10">Category name</li>
+                        {category.length > 0 ? category.map(cat => (
                             <>
-                                <li>{cat.name}</li>
+                                <li className="p-3 border">{cat.name}
+
+                                </li>
                             </>
-                        ))}
+                        )) : <li className="p-3 border">There is not categories.</li>}
                     </ul>
                 </main>
 
