@@ -6,15 +6,22 @@ const { default: Layout } = require("./Layout")
 const Categories = () => {
     const [category, setCategory] = useState([])
     const [name, setName] = useState('')
+    const [status, setStatus] = useState('')
 
     function changeHandler(e) {
         setName(e.target.value)
     }
     async function saveCategory(e) {
         e.preventDefault()
-        await axios.post('/api/categories/', { name });
-        setName('')
-        fetchCategories()
+        if (name !== '') {
+            await axios.post('/api/categories/', { name });
+            setName('')
+            fetchCategories()
+        } else {
+            setStatus('there is no input. please enter the category name!!')
+
+            setTimeout(() => setStatus(''), 3000);
+        }
     }
     function fetchCategories() {
         axios.get('/api/categories').then(res => setCategory(res.data))
@@ -53,10 +60,12 @@ const Categories = () => {
                         )) : <li className="p-3 border">There is not categories.</li>}
                     </ul>
                 </main>
-
+                {status !== '' ? <div className="absolute bottom-5 left-[40%] rounded p-5 bg-red-600 text-white">{status}</div> : ''}
             </Layout>
         </>
     )
 }
+
+
 
 export default Categories
