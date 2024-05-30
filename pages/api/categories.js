@@ -15,4 +15,10 @@ export default async function handle(req, res) {
         res.json(await Category.find())
     }
 
+    if (method === 'DELETE') {
+        if (req.query?.id) {
+            await Category.deleteOne({_id: req.query?.id})
+            res.json(true)
+        }
+    }
 }
