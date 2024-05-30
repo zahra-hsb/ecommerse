@@ -98,7 +98,7 @@ function Modal(props) {
     return (
         <>
             <div className="w-full h-full bg-[#333] fixed bottom-0 left-0 right-0 bg-opacity-30"></div>
-            <div className="fixed top-32 bg-white left-[40%] p-5 shadow-xl">
+            <div className="fixed sm:top-32 top-52 bg-white left-10% sm:left-[40%] p-5 shadow-xl">
                 <h3 className="text-xl">Are you sure to delete <span className="text-red-500">{props.name}</span> category?</h3>
                 <div className="flex items-center justify-center">
                     <button onClick={props.handleDeleteCat} className="text-red-600 p-2">yes</button>
